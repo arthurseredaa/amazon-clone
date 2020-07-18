@@ -1,0 +1,41 @@
+.header {
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  height: 3em;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px;
+  width: 100%;
+  max-width: 1500px;
+}
+
+.headerLinks {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+}
+
+.linkItem {
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  opacity: 0.7;
+  transition: 0.1s all linear;
+}
+.linkItem:hover {
+  opacity: 1;
+}
+.linkItem p {
+  font-weight: 300;
+  font-size: 11px;
+}
+.active {
+  color: #f79b34;
+  opacity: 1;
+}

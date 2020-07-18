@@ -1,0 +1,25 @@
+.cart {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+}
+.noGrid {
+  display: flex;
+  justify-content: center;
+  background-color: #222;
+  height: calc(100vh - 4em);
+}
+.goodList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-right: 1px solid #ccc;
+}
+
+.emptyCartText {
+  margin: 2em auto;
+  font-size: 50px;
+  color: var(--orange-color);
+}

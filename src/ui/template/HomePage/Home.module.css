@@ -1,0 +1,16 @@
+.homepage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.homepageBanner {
+  object-fit: cover;
+}
+.homepageBannerWrapper {
+  height: 400px;
+  overflow: hidden;
+  mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  margin-bottom: -100px;
+}

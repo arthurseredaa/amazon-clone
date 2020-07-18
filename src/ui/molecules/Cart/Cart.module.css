@@ -1,0 +1,19 @@
+.headerCart {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 10%;
+}
+.headerCart a {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.goodsCount {
+  font-size: 15px;
+}
+.headerCart .active {
+  color: var(--orange-color);
+}

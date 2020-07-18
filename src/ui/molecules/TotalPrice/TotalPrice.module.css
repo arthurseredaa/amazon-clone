@@ -1,0 +1,39 @@
+.totalPrice {
+  padding: 30px 10px;
+  display: flex;
+  justify-content: center;
+}
+.totalPriceCard {
+  background-color: #ccc;
+  position: fixed;
+  padding: 30px 60px;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.buyButton {
+  height: 40px;
+  width: 100px;
+  padding: 0px 70px;
+  border: none;
+  font-weight: 600;
+  background: transparent;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.1s all linear;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #00e676;
+  transition: all 0.1s linear;
+  color: #fff;
+}
+.buyButton:hover {
+  background-color: #008e49;
+}

@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Header } from "./ui/organisms/header/Header";
+import { Home } from "./ui/template/HomePage/HomePage";
+import { Login } from "./ui/template/LoginPage/LoginPage";
+import { CartPage } from "./ui/template/CartPage/CartPage";
 
-function App() {
+export const App = () => {
+  const [goods, setGoodsCount] = useState([]);
+  window.goods = goods;
+
+  const onAddToCart = (goodName) => setGoodsCount([...goods, goodName]);
+
+  const onRemoveFromCart = (id) =>
+    setGoodsCount(goods.filter((item) => item.id !== id));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header goodsCount={goods.length} />
+        <Route path="/sign-in" component={() => <Login />} />
+        <Route path="/checkout" component={() => <h1>Checkout</h1>} />
+        <Route
+          exact
+          path="/"
+          component={() => <Home onAddToCart={onAddToCart} />}
+        />
+        <Route
+          path="/cart"
+          component={() => (
+            <CartPage onRemoveFromCart={onRemoveFromCart} goods={goods} />
+          )}
+        />
+      </div>
+    </BrowserRouter>
   );
-}
-
-export default App;
+};
