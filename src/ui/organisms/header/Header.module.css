@@ -4,13 +4,23 @@
   display: flex;
   position: fixed;
   top: 0;
+  flex-wrap: nowrap;
   z-index: 1000;
   height: 3em;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 10px 0px;
   width: 100%;
   max-width: 1500px;
+}
+.leftSide {
+  width: 100%;
+  display: flex;
+}
+.rightSide {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
 }
 .loginBox {
   display: flex;
@@ -28,7 +38,7 @@
 }
 .headerLinks {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 30%;
 }
@@ -52,4 +62,20 @@
 .active {
   color: #f79b34;
   opacity: 1;
+}
+/* MEDIA */
+@media (max-width: 700px) {
+  .header {
+    flex-wrap: wrap;
+    height: 4em;
+  }
+  .rightSide {
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 0.5em;
+  }
+  .headerLinks {
+    width: 100%;
+    justify-content: space-between;
+  }
 }

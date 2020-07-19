@@ -8,42 +8,55 @@ import AmazonLogo from "./assets/amazon-logo.png";
 export const Header = ({ goodsCount, login }) => {
   return (
     <div className={s.header}>
-      <Logo logoIcon={AmazonLogo} width="100" margin="0px 0px -15px 20px" />
-      <SearchBar />
-      <div className={s.headerLinks}>
-        <NavLink
-          exact
-          className={s.linkItem}
-          activeClassName={s.active}
-          to={"/returns-and-orders"}
-        >
-          <p>Returns &</p>
-          Orders
-        </NavLink>
-        <NavLink
-          className={s.linkItem}
-          activeClassName={s.active}
-          to={"/prime"}
-        >
-          <p>Your</p> Prime
-        </NavLink>
-        {login ? (
-          <div className={s.loginBox}>
-            <p className={s.userLoginDetail}>You loggined as</p>
-            <p className={s.userLogin}>{login}</p>
-          </div>
-        ) : (
+      <div className={s.leftSide}>
+        <Logo logoIcon={AmazonLogo} width="100" margin="0px 0px -15px 20px" />
+        <SearchBar />
+      </div>
+
+      <div className={s.rightSide}>
+        <div className={s.headerLinks}>
+          <NavLink
+            exact
+            className={s.linkItem}
+            activeClassName={s.active}
+            to={"/"}
+          >
+            Homepage
+          </NavLink>
+          <NavLink
+            exact
+            className={s.linkItem}
+            activeClassName={s.active}
+            to={"/returns-and-orders"}
+          >
+            <p>Returns &</p>
+            Orders
+          </NavLink>
           <NavLink
             className={s.linkItem}
             activeClassName={s.active}
-            to={"/sign-in"}
+            to={"/prime"}
           >
-            <p>Hello, </p>
-            Sign in
+            <p>Your</p> Prime
           </NavLink>
-        )}
+          {login ? (
+            <div className={s.loginBox}>
+              <p className={s.userLoginDetail}>You loggined as</p>
+              <p className={s.userLogin}>{login}</p>
+            </div>
+          ) : (
+            <NavLink
+              className={s.linkItem}
+              activeClassName={s.active}
+              to={"/sign-in"}
+            >
+              <p>Hello, </p>
+              Sign in
+            </NavLink>
+          )}
+        </div>
+        <Cart goodsCount={goodsCount} />
       </div>
-      <Cart goodsCount={goodsCount} />
     </div>
   );
 };
