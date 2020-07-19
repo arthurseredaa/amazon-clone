@@ -3,10 +3,12 @@ import s from "./Login.module.css";
 import { useForm } from "react-hook-form";
 import { auth } from "./../../../firebase";
 import { useHistory } from "react-router-dom";
+import { Preloader } from "../../atoms/Preloader/Preloader";
 
 export const Login = ({ setLogin }) => {
   const { register, errors, handleSubmit, watch } = useForm();
   const [isOpen, setOpen] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [errorText, setErrorText] = useState({
     isError: false,
     message: "",
@@ -18,37 +20,52 @@ export const Login = ({ setLogin }) => {
     passwordValue = watch("password");
 
   const signIn = () => {
+    setLoading(true);
     return auth
       .signInWithEmailAndPassword(emailValue, passwordValue)
       .then((response) => {
         setErrorText({ isError: false, message: null });
+        setLoading(false);
         history.push("/");
         setLogin(response.user.email);
       })
       .catch((e) => {
+        setLoading(false);
         setErrorText({ isError: true, message: `${e}` });
       });
   };
 
   const createUser = () => {
+    setLoading(true);
     auth
       .createUserWithEmailAndPassword(emailValue, passwordValue)
       .then((response) => {
         setErrorText({ isError: false, message: null });
+        setLoading(false);
         setOpen(false);
       })
       .catch((e) => {
+        setLoading(false);
         setErrorText({ isError: true, message: `${e}` });
       });
   };
+
+  if (isLoading) {
+    return (
+      <div className={s.login}>
+        <Preloader bgcolor="#fff" />
+      </div>
+    );
+  }
 
   return (
     <div className={s.login}>
       <h1 className={s.loginTitle}>
         Sign <span>in</span>
       </h1>
-      <p className={s.warningText}>{errorText.message}</p>
       <form className={s.loginForm} onSubmit={handleSubmit(signIn)}>
+        <p className={s.errorMessage}>{errorText.message}</p>
+
         <label htmlFor="email">
           E-mail{" "}
           {errors.email && (
