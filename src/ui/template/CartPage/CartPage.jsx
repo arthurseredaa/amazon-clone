@@ -12,7 +12,7 @@ export const CartPage = ({ goods, onRemoveFromCart }) => {
       title={good.title}
       price={good.price}
       image={good.image}
-      id={good.id}
+      id={good.idForDelete}
     />
   ));
 

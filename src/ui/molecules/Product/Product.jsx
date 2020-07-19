@@ -1,8 +1,11 @@
 import React from "react";
 import s from "./Product.module.css";
+import { nanoid } from "nanoid";
+
 export const Product = ({ id, title, image, price, rating, onAddToCart }) => {
   const onClickHandler = () => {
-    let newGoodForCart = { id, title, image, price, rating };
+    let idForDelete = nanoid(5);
+    let newGoodForCart = { id, title, image, price, rating, idForDelete };
     onAddToCart(newGoodForCart);
   };
   return (

@@ -8,18 +8,23 @@ import { CartPage } from "./ui/template/CartPage/CartPage";
 
 export const App = () => {
   const [goods, setGoodsCount] = useState([]);
+  const [login, setLogin] = useState(null);
   window.goods = goods;
 
   const onAddToCart = (goodName) => setGoodsCount([...goods, goodName]);
 
-  const onRemoveFromCart = (id) =>
-    setGoodsCount(goods.filter((item) => item.id !== id));
-
+  const onRemoveFromCart = (id) => {
+    debugger;
+    setGoodsCount(goods.filter((item) => item.idForDelete !== id));
+  };
   return (
     <BrowserRouter>
       <div className="App">
-        <Header goodsCount={goods.length} />
-        <Route path="/sign-in" component={() => <Login />} />
+        <Header goodsCount={goods.length} login={login} />
+        <Route
+          path="/sign-in"
+          component={() => <Login setLogin={setLogin} />}
+        />
         <Route path="/checkout" component={() => <h1>Checkout</h1>} />
         <Route
           exact
