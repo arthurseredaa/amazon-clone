@@ -1,0 +1,17 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"   # works for npm/yarn/pnpm (with a lockfile)
+    directory: "/"             # root; Dependabot will follow workspaces too
+    schedule:
+      interval: "daily"        # check every day
+    open-pull-requests-limit: 1
+    versioning-strategy: increase
+
+    labels: ["dependencies", "automated"]
+
+    # Single PR for all PATCH updates
+    groups:
+      all-patches:
+        patterns: ["*"]
+        update-types: ["patch"]
